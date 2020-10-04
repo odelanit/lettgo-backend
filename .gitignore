@@ -1,0 +1,6 @@
+/venv/
+/uploads/
+/assets/
+/.vscode/
+/.idea
+/debug.log
