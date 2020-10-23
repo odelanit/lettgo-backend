@@ -82,13 +82,21 @@ WSGI_APPLICATION = 'lettgo.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'lettgo',
+    #     'USER': 'lettgo',
+    #     'PASSWORD': 'v3Xx4xAX8AB8yY2f',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '3306'
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'lettgo',
         'USER': 'lettgo',
         'PASSWORD': 'v3Xx4xAX8AB8yY2f',
         'HOST': '127.0.0.1',
-        'PORT': '3306'
+        'PORT': '5432'
     }
 }
 
@@ -135,6 +143,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
 SIMPLEUI_STATIC_OFFLINE = True
+SIMPLEUI_HOME_INFO = False
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [

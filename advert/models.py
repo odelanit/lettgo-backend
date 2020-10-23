@@ -89,6 +89,7 @@ class Advert(models.Model):
     description = models.TextField()
     status = models.CharField(choices=STATUS_CHOICES, max_length=64, default='publish')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    thumbnail_url = models.CharField(max_length=255, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -96,16 +97,25 @@ class Advert(models.Model):
     def __str__(self):
         return self.title
 
+    def thumbnail_tag(self):
+        if self.thumbnail_url:
+            return mark_safe('<img src="%s" style="width: 100px; height: 100px;" />' % self.thumbnail_url)
+        else:
+            return '-'
+    thumbnail_tag.short_description = 'Thumbnail'
+
 
 class AdvertAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'title',
+        'thumbnail_tag',
         'status',
         'user',
         'created_at',
-        'updated_at'
+        'updated_at',
     )
+    readonly_fields = ('thumbnail_tag',)
 
 
 class AdvertData(models.Model):
