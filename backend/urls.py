@@ -1,11 +1,9 @@
 from django.urls import path
 
 from backend.views import UserList, UserCreate, UserUpdate, CategoryList, CategoryCreate, CategoryUpdate, AreaList, \
-    AreaCreate, AreaUpdate, AdvertList, AdvertCreate, AdvertUpdate, CustomAuthToken, ImageUploadView
+    AreaCreate, AreaUpdate, AdvertList, AdvertCreate, AdvertUpdate, ImageUploadView
 
 urlpatterns = [
-    path('auth/login', CustomAuthToken.as_view()),
-
     path('user/list', UserList.as_view()),
     path('user/create', UserCreate.as_view()),
     path('user/<pk>', UserUpdate.as_view()),
