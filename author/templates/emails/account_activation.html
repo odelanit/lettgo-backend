@@ -1,0 +1,7 @@
+{% autoescape off %}
+Hi {{ user.username|default_if_none:'there.' }},
+
+Please click on the link below to confirm your registration:
+
+{{ protocol }}://{{ domain }}/activate/{{ uid }}/{{ token }}
+{% endautoescape %}

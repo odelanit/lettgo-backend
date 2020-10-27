@@ -16,13 +16,12 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers
+from django.views.generic import RedirectView
 
 from lettgo import settings
 
-router = routers.DefaultRouter()
-
 urlpatterns = [
+    path('', RedirectView.as_view(url='/admin')),
     path('admin/', admin.site.urls),
     path('api/', include('backend.urls')),
     path('api/', include('author.urls')),

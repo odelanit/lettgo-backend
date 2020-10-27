@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
+    'channels',
     'backend',
     'author',
 ]
@@ -78,6 +79,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'lettgo.wsgi.application'
+ASGI_APPLICATION = 'lettgo.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -138,13 +140,23 @@ USE_TZ = True
 STATIC_URL = '/assets/'
 STATIC_ROOT = os.path.join(BASE_DIR, "assets")
 MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
-MEDIA_URL = '/uploads/'
+MEDIA_URL = '/api/uploads/'
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '9f6799af346a7e'
+EMAIL_HOST_PASSWORD = '83440f13656820'
+EMAIL_PORT = '2525'
+
 SIMPLEUI_STATIC_OFFLINE = True
 SIMPLEUI_HOME_INFO = False
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'lettgo.backends.CustomModelBackend'
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
