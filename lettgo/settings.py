@@ -140,7 +140,7 @@ USE_TZ = True
 STATIC_URL = '/assets/'
 STATIC_ROOT = os.path.join(BASE_DIR, "assets")
 MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
-MEDIA_URL = '/api/uploads/'
+MEDIA_URL = '/uploads/'
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True

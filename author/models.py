@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -18,3 +19,7 @@ class Profile(models.Model):
     email_verified_at = models.DateTimeField(null=True)
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+
+
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'avatar', 'phone', 'facebook_id', 'twitter_id', 'youtube_id', 'linkedin_id', 'instagram_id', 'website', 'email_verified_at',)
