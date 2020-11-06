@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.safestring import mark_safe
 
+from advert.helper import image_directory_path
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -89,7 +91,8 @@ class Advert(models.Model):
     description = models.TextField()
     status = models.CharField(choices=STATUS_CHOICES, max_length=64, default='publish')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    thumbnail_url = models.CharField(max_length=255, null=True)
+    thumbnail = models.ImageField(max_length=255, null=True, upload_to=image_directory_path)
+    thumbnail_url = models.URLField(null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -98,8 +101,8 @@ class Advert(models.Model):
         return self.title
 
     def thumbnail_tag(self):
-        if self.thumbnail_url:
-            return mark_safe('<img src="%s" style="width: 100px; height: 100px;" />' % self.thumbnail_url)
+        if self.thumbnail:
+            return mark_safe('<img src="%s" style="width: 100px; height: 100px;" />' % self.thumbnail.url)
         else:
             return '-'
     thumbnail_tag.short_description = 'Thumbnail'
