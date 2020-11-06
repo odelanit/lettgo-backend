@@ -92,7 +92,6 @@ class Advert(models.Model):
     status = models.CharField(choices=STATUS_CHOICES, max_length=64, default='publish')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     thumbnail = models.ImageField(max_length=255, null=True, upload_to=image_directory_path)
-    thumbnail_url = models.URLField(null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
