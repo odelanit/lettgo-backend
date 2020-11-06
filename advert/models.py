@@ -38,22 +38,22 @@ class Category(models.Model):
         return self._children.all()
 
     def icon_tag(self):
-        if self.icon_url:
-            return mark_safe('<img src="%s" />' % self.icon_url)
+        if self.icon:
+            return mark_safe('<img src="%s" />' % self.icon.url)
         else:
             return '-'
     icon_tag.short_description = 'Icon'
 
     def image_tag(self):
-        if self.image_url:
-            return mark_safe('<img src="%s" />' % self.image_url)
+        if self.image:
+            return mark_safe('<img src="%s" />' % self.image.url)
         else:
             return '-'
     image_tag.short_description = 'Image'
 
     def marker_tag(self):
-        if self.marker_url:
-            return mark_safe('<img src="%s" />' % self.marker_url)
+        if self.marker:
+            return mark_safe('<img src="%s" />' % self.marker.url)
         else:
             return '-'
     marker_tag.short_description = 'Image'
