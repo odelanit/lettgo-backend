@@ -9,9 +9,6 @@ from advert.helper import image_directory_path
 class Category(models.Model):
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255, unique=True)
-    image_url = models.CharField(blank=True, null=True, max_length=255)
-    marker_url = models.CharField(blank=True, null=True, max_length=255)
-    icon_url = models.CharField(blank=True, null=True, max_length=255)
     image = models.ImageField(null=True, upload_to=image_directory_path)
     marker = models.ImageField(null=True, upload_to=image_directory_path)
     icon = models.ImageField(null=True, upload_to=image_directory_path)
