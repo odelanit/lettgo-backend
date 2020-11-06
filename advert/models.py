@@ -12,6 +12,9 @@ class Category(models.Model):
     image_url = models.CharField(blank=True, null=True, max_length=255)
     marker_url = models.CharField(blank=True, null=True, max_length=255)
     icon_url = models.CharField(blank=True, null=True, max_length=255)
+    image = models.ImageField(null=True, upload_to=image_directory_path)
+    marker = models.ImageField(null=True, upload_to=image_directory_path)
+    icon = models.ImageField(null=True, upload_to=image_directory_path)
 
     parent = models.ForeignKey("Category", related_name="_children", null=True, on_delete=models.SET_NULL)
 
